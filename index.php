@@ -1,23 +1,23 @@
 <?php
-    session_start();
+    session_start(); //inicia sessão 
 
-    include("infra/db/connect.php");
+    include("infra/db/connect.php"); // conecta com o arquivo connect.php
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $usuario = $_POST["usuario"];
         $senha = $_POST["senha"];
         
-        $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'"; //
 
-        $resultado = $conn->query($sql);
+        $resultado = $conn->query($sql); //vai buscar do banco de dados 
 
         if ($resultado->num_rows > 0){
             $_SESSION["usuario"] = $usuario;
             header("Location: public/home.php");
             exit();
         }else{
-            $erro = "Usuário ou senha inválidos!";
+            $erro = "Usuário ou senha inválidos!"; //mensagem de erro
         }
     }
 ?>
@@ -29,9 +29,9 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Sitema de Login Simples</h1>
+    <h1>Sitema de Login Simples</h1>  
 
-    <form method="POST">
+    <form method="POST">    // formulário com usuário e senha para login 
         <label>Usuário:</label>
         <input type="text" name="usuario">
         <br>
@@ -44,7 +44,7 @@
                 echo $erro;
             };
 
-            // esse erro serve ara alguma coisa
+            // caso o usuário ou sennha estiverem incorretos, vai mostrar mensagem de erro 
         
         ?>
         <br>
