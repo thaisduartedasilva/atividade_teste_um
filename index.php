@@ -1,23 +1,23 @@
 <?php
-    session_start(); //inicia sessão 
+    session_start(); //inicia uma sessão 
 
-    include("infra/db/connect.php"); // conecta com o arquivo connect.php
+    include("infra/db/connect.php"); // inclui o arquivo que conecta com o banco de dados 
 
-    if($_SERVER['REQUEST_METHOD'] == "POST"){
+    if($_SERVER['REQUEST_METHOD'] == "POST"){ //SE o formulário for enviado por POST ele vai executar o resto 
 
-        $usuario = $_POST["usuario"];
+        $usuario = $_POST["usuario"]; //recebe as variáveis enviadas pelo formulário 
         $senha = $_POST["senha"];
         
-        $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'"; //
+        $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'"; //consulta no banco de dados por um usuário com o login e senha informados
 
-        $resultado = $conn->query($sql); //vai buscar do banco de dados 
+        $resultado = $conn->query($sql); //Executa a consulta SQL 
 
-        if ($resultado->num_rows > 0){
-            $_SESSION["usuario"] = $usuario;
-            header("Location: public/home.php");
+        if ($resultado->num_rows > 0){ // verifica se foi encontrado o usuário e sennha no banco de dados 
+            $_SESSION["usuario"] = $usuario; // Armazena o nome do usuário na sessão
+            header("Location: public/home.php"); // Redireciona para a página inicial do sistema
             exit();
         }else{
-            $erro = "Usuário ou senha inválidos!"; //mensagem de erro
+            $erro = "Usuário ou senha inválidos!"; //mensagem de erro caso o usuário e/ou senha não sejam encontrados no banco de dados 
         }
     }
 ?>
@@ -31,7 +31,7 @@
 <body>
     <h1>Sitema de Login Simples</h1>  
 
-    <form method="POST">    // formulário com usuário e senha para login 
+    <form method="POST">    <!-- formulário com usuário e senha para login --> 
         <label>Usuário:</label>
         <input type="text" name="usuario">
         <br>
@@ -44,7 +44,7 @@
                 echo $erro;
             };
 
-            // caso o usuário ou sennha estiverem incorretos, vai mostrar mensagem de erro 
+            
         
         ?>
         <br>
