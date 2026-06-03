@@ -1,6 +1,6 @@
-<h4>Usuários Cadastrados</h4>
+<h4>Usuários Cadastrados</h4> <!--titulo da tabela -->
 
-<table border="1" cellpadding="3">
+<table border="1" cellpadding="3"> <!-- Cria a tabela -->
 
     <tr>
         <th>ID</th>
@@ -10,13 +10,13 @@
 
     <?php
     
-    $sqlTodosUsuarios = "SELECT * FROM usuarios";
+    $sqlTodosUsuarios = "SELECT * FROM usuarios"; // Busca todos os usuários cadastrados
 
-    $resultadoTodosUsuarios = $conn->query($sqlTodosUsuarios);
+    $resultadoTodosUsuarios = $conn->query($sqlTodosUsuarios); // Executa a consulta
 
-    while($linha = $resultadoTodosUsuarios->fetch_assoc()){
+    while($linha = $resultadoTodosUsuarios->fetch_assoc()){ // Percorre todos os registros retornados
 
-    // o fetch assoc
+    // // fetch_assoc() transforma cada linha em um array associativo
 
         echo "  <tr>
                     <td>". $linha['id'] . "</td>
