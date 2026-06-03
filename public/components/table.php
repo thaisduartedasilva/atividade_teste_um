@@ -6,6 +6,8 @@
         <th>ID</th>
         <th>Usuário</th>
         <th>Senha</th>
+        <th>Edita</th>
+        <th>Exclui</th>
     </tr>
 
     <?php
@@ -16,12 +18,14 @@
 
     while($linha = $resultadoTodosUsuarios->fetch_assoc()){ // Percorre todos os registros retornados
 
-    // // fetch_assoc() transforma cada linha em um array associativo
+    // fetch_assoc() transforma cada linha em um array associativo
 
         echo "  <tr>
                     <td>". $linha['id'] . "</td>
                     <td>". $linha['usuario'] . "</td>
                     <td>". $linha['senha'] . "</td>
+                    <td><a href='update.php?id=". $linha['id'] . "'>Editar</a></td>
+                    <td><a href='delete.php'>Excluir</a></td>
                 </tr>
         ";
 
