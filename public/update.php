@@ -8,7 +8,18 @@ include("../infra/db/connect.php");
 
 $id = $_GET['id'];
 
-$sql = "UPDATE usuarios SET usuario='Thais', senha='333' WHERE id=$id";
+    $sql = "INSERT INTO usuarios (usuario,senha)
+    VALUES ('$novoUsuario','$novaSenha')"  
+    WHERE id= ('$id')";
+
+
+    if($conn->query($sql) === TRUE){
+        echo "<script> alert('Usuário cadastrado com sucesso!')</script>";
+    }else{
+        echo "<script> alert('Erro ao cadastrar')</script>";
+    }
+
+ 
 //Faça isso no registro com id 1
 
 $conn->query($sql);
