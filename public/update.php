@@ -3,28 +3,54 @@
 session_start();
 //Inicia uma nova sessão ou retoma a sessão existente. Isso é necessário para acessar as variáveis de sessão.
 
+include("components/start.php");
+
 include("../infra/db/connect.php");
 //Pega o conteúdo do arquivo connect.php e coloca aqui. Esse arquivo contém a conexão com o banco de dados.
 
-$id = $_GET['id'];
+$id = $_GET["id"];
 
-    $sql = "INSERT INTO usuarios (usuario,senha)
-    VALUES ('$novoUsuario','$novaSenha')"  
-    WHERE id= ('$id')";
+$sql = "SELECT * FROM usuarios WHERE id = $id";
+$resultado = $conn -> query($sql);
+$usuario = $resultado -> fetch_assoc();
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $novoUsuario = $_POST["usuario"];
+    $novaSenha = $_POST["senha"];
 
-    if($conn->query($sql) === TRUE){
-        echo "<script> alert('Usuário cadastrado com sucesso!')</script>";
-    }else{
-        echo "<script> alert('Erro ao cadastrar')</script>";
+    $sqlUpdate = " UPDATE usuarios SET usuario = '$novoUsuario', senha = '$novaSenha' WHERE id = $id";
+
+    if($conn -> query($sqlUpdate) === TRUE){
+        header("Location: home.php");
+        exit();
     }
 
- 
-//Faça isso no registro com id 1
 
-$conn->query($sql);
-//Essa linha executa o comando. $conn = conexão com o banco. query() = envia uma consulta SQL.
+}
 
-header("Location: home.php");
 ?>
 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+</head>
+<body>
+
+<h2>Editar Usuário</h2>
+<form method="POST">
+        <label>Usuário:</label>
+        <input type="text" name="usuario" value =" <?php echo $usuario['usuario'] ?>">
+        <br>
+        <label>Senha:</label>
+        <input type="password" name="senha" value =" <?php echo $usuario['senha'] ?>">
+        <br>
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
+    
+    
+
+</body>
+</html>

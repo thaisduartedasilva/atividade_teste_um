@@ -1,9 +1,5 @@
 <?php
-session_start();
-if(!isset($_SESSION["usuario"])){ // Verifica se existe usuário logado
-    header("Location: ../index.php"); // Se não existir, volta para a tela de login
-    exit();
-}
+include("components/start.php");
 
 include("../infra/db/connect.php"); // Conecta ao banco de dados
 

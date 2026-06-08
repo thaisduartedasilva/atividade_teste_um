@@ -6,8 +6,8 @@
         <th>ID</th>
         <th>Usuário</th>
         <th>Senha</th>
-        <th>Edita</th>
-        <th>Exclui</th>
+        <th>Editar</th>
+        <th>Excluir</th>
     </tr>
 
     <?php
@@ -25,7 +25,7 @@
                     <td>". $linha['usuario'] . "</td>
                     <td>". $linha['senha'] . "</td>
                     <td><a href='update.php?id=". $linha['id'] . "'>Editar</a></td>
-                    <td><a href='delete.php'>Excluir</a></td>
+                    <td><a href='confirmar_excluir.php?id=". $linha['id'] . "'>Excluir</a></td>
                 </tr>
         ";
 
