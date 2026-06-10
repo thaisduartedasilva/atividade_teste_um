@@ -1,6 +1,6 @@
 <?php
 include("components/start.php");
-include("..infra/db/connect.php");
+include("../infra/db/connect.php");
 
 $id = $_GET["id"];
 ?>
@@ -15,7 +15,7 @@ $id = $_GET["id"];
 <body>
     <h2>Tem certeza que deseja excluir este usuário?</h2>
 
-    <a href="excluir.php?id=<?php echo $id;?>">
+    <a href="excluir.php?id=<?php echo $id; ?>">
         <button>Sim, excluir</button>
     </a>
 

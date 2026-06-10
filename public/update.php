@@ -1,7 +1,5 @@
 <?php
 //Abre um bloco de código PHP.
-session_start();
-//Inicia uma nova sessão ou retoma a sessão existente. Isso é necessário para acessar as variáveis de sessão.
 
 include("components/start.php");
 
