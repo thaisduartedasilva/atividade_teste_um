@@ -19,7 +19,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sqlUpdate = " UPDATE usuarios SET usuario = '$novoUsuario', senha = '$novaSenha' WHERE id = $id";
 
     if($conn -> query($sqlUpdate) === TRUE){
-        header("Location: home.php");
+       echo "<script>
+            alert('Usuário atualizado com sucesso!');
+            window.location='home.php';
+          </script>";
         exit();
     }
 

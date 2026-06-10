@@ -14,10 +14,11 @@
 
         if ($resultado->num_rows > 0){ // verifica se foi encontrado o usuário e sennha no banco de dados 
             $_SESSION["usuario"] = $usuario; // Armazena o nome do usuário na sessão
+            
             header("Location: public/home.php"); // Redireciona para a página inicial do sistema
             exit();
         }else{
-            $erro = "Usuário ou senha inválidos!"; //mensagem de erro caso o usuário e/ou senha não sejam encontrados no banco de dados 
+            $erro = "Ops! Usuário ou senha incorretos. Tente novamente."; //mensagem de erro caso o usuário e/ou senha não sejam encontrados no banco de dados 
         }
     }
 ?>
@@ -38,15 +39,13 @@
         <label>Senha:</label>
         <input type="password" name="senha">
         <br>
-        <?php
-        
-            if(isset($erro)){
-                echo $erro;
-            };
-
+            <?php
             
-        
-        ?>
+                if(isset($erro)){
+                    echo $erro;
+                };
+
+            ?>
         <br>
         <button type="submit">Entrar</button>
     </form>

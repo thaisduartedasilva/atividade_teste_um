@@ -13,7 +13,8 @@ $id = $_GET["id"];
     <title>Confirmar Exclusão</title>
 </head>
 <body>
-    <h2>Tem certeza que deseja excluir este usuário?</h2>
+    <h2>⚠️ Atenção!</h2>
+<p>Tem certeza que deseja remover este usuário do sistema?</p>
 
     <a href="excluir.php?id=<?php echo $id; ?>">
         <button>Sim, excluir</button>
